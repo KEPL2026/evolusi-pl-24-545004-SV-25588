@@ -47,4 +47,36 @@ class BudgetCalculationTest extends TestCase
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['monthly_income']);
     }
+
+    /** Test 2: Validasi penolakan jika total persentase kurang dari 100% */
+    public function test_validation_fails_when_percentage_sum_is_under_100(): void
+    {
+        $payload = [
+            'monthly_income' => 1000000,
+            'food_pct' => 40,
+            'operational_pct' => 20,
+            'healing_pct' => 10, // Total 70%
+        ];
+
+        $response = $this->postJson('/calculate', $payload);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['percentages']);
+    }
+
+    /** Test 3: Validasi penolakan jika total persentase lebih dari 100% */
+    public function test_validation_fails_when_percentage_sum_is_over_100(): void
+    {
+        $payload = [
+            'monthly_income' => 1000000,
+            'food_pct' => 50,
+            'operational_pct' => 40,
+            'healing_pct' => 30, // Total 120%
+        ];
+
+        $response = $this->postJson('/calculate', $payload);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['percentages']);
+    }
 }

@@ -10,7 +10,7 @@
 
 ## Tech Stack
 
-* **Backend**: Laravel 11 (PHP 8.3)
+* **Backend**: Laravel 11 (PHP 8.4)
 * **Frontend**: Tailwind CSS & Alpine.js (via CDN)
 * **Testing & QA**: PHPUnit & Laravel Pint
 * **CI/CD**: GitHub Actions

@@ -197,7 +197,7 @@
             <div x-show="currentView === 'form'">
                 <div class="mb-6">
                     <h2 class="text-2xl font-bold text-earth-textMain">Calculate Budget</h2>
-                    <p class="text-sm text-earth-textMuted mt-1">Preset ratio 50/30/20 — enter your allowance to continue.</p>
+                    <p class="text-sm text-earth-textMuted mt-1">Specify your allowance and customize your allocation ratios.</p>
                 </div>
 
                 <template x-if="validationError">
@@ -227,14 +227,13 @@
 
                     <div class="pt-2">
                         <label class="block text-xs font-semibold uppercase tracking-wider text-earth-textMuted mb-2">
-                            Allocation Ratios (Preset — fixed at 50/30/20)
+                            Allocation Ratios (customize as you like — must total 100%)
                         </label>
                         <div class="grid grid-cols-3 gap-3">
                             <div class="p-3 rounded-[16px] bg-earth-card border border-earth-surface">
                                 <span class="block text-xs font-medium text-earth-textMuted mb-1">Food</span>
                                 <div class="flex items-center">
-                                    <input type="number" x-model="foodPct" readonly
-                                        class="w-full bg-transparent text-earth-textMain font-bold text-base focus:outline-none cursor-not-allowed">
+                                    <input type="number" x-model="foodPct" class="w-full bg-transparent text-earth-textMain font-bold text-base focus:outline-none">
                                     <span class="text-xs text-earth-textMuted font-medium">%</span>
                                 </div>
                             </div>
